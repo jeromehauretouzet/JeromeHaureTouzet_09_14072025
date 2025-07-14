@@ -27,6 +27,11 @@
       width: 75px;
       height: 21px;
     }
+    // <--- Correction de la visivilité de l'image dans CardEvent
+    img {
+        object-fit: cover;//                                            --- L'image va "couvrir" l'espace
+        width: 100%;//                                                  --- L'image prend toute la largeur du conteneur
+    }
   }
   background: #ffffff;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);

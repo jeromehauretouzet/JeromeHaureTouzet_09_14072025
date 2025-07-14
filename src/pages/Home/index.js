@@ -127,7 +127,8 @@ const Page = () => {
             title={lastEvent?.title}
             date={new Date(lastEvent?.date)}
             small
-            label="boom"
+            // <--- Correction du type de l'évènement (à la place de "Boom")
+            label={lastEvent?.type} //                                                   --- Type de l'évènement
           />
         </div>
         <div className="col contact">
