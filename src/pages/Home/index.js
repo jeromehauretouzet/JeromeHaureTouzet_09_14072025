@@ -14,7 +14,7 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   // <--- Correction de l'EventCard dans le footer
-  const { data } = useData(); //                                                   --- On récupère les données
+  const { data } = useData(); //                                                  --- On récupère les données
 
   const events = data?.events; //                                                 --- Liste des évènements
   const sortedEvents = events?.sort(
@@ -122,14 +122,16 @@ const Page = () => {
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
           {/* <--- Correction de l'EventCard dans le footer */}
-          <EventCard
-            imageSrc={lastEvent?.cover}
-            title={lastEvent?.title}
-            date={new Date(lastEvent?.date)}
-            small
-            // <--- Correction du type de l'évènement (à la place de "Boom")
-            label={lastEvent?.type} //                                                   --- Type de l'évènement
-          />
+          {lastEvent && (
+            <EventCard
+              imageSrc={lastEvent?.cover}
+              title={lastEvent?.title}
+              date={new Date(lastEvent?.date)}
+              small
+              // <--- Correction du type de l'évènement (à la place de "Boom")
+              label={lastEvent?.type} //                                                   --- Type de l'évènement
+            />
+          )}
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>
