@@ -122,7 +122,7 @@ const Page = () => {
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
           {/* <--- Correction de l'EventCard dans le footer */}
-          {lastEvent && (
+          {lastEvent && ( //                                            --- On affiche Carte que si lastEvent existe
             <EventCard
               imageSrc={lastEvent?.cover}
               title={lastEvent?.title}
