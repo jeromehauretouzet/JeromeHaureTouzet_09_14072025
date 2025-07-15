@@ -11,6 +11,7 @@ import Icon from "../../components/Icon";
 import Form from "../../containers/Form";
 import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
+import ModalEvent from "../../containers/ModalEvent";
 
 const Page = () => {
   // <--- Correction de l'EventCard dans le footer
@@ -30,7 +31,9 @@ const Page = () => {
         <section className="SliderContainer">
           <Slider />
         </section>
-        <section className="ServicesContainer">
+
+        {/* <--- Correction: Ajout de l'id pour le lien du menu */}
+        <section id="nos-services" className="ServicesContainer">
           <h2 className="Title">Nos services</h2>
           <p>Nous organisons des événements sur mesure partout dans le monde</p>
           <div className="ListContainer">
@@ -59,11 +62,13 @@ const Page = () => {
             </ServiceCard>
           </div>
         </section>
-        <section className="EventsContainer">
+        {/* <--- CORRECTION : Ajout de l'id pour le lien du menu */}
+        <section id="nos-realisations" className="EventsContainer">
           <h2 className="Title">Nos réalisations</h2>
           <EventList />
         </section>
-        <section className="PeoplesContainer">
+        {/* <--- CORRECTION : Ajout de l'id pour le lien du menu */}
+        <section id="notre-equipe" className="PeoplesContainer">
           <h2 className="Title">Notre équipe</h2>
           <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
           <div className="ListContainer">
@@ -123,14 +128,19 @@ const Page = () => {
           <h3>Notre derniére prestation</h3>
           {/* <--- Correction de l'EventCard dans le footer */}
           {lastEvent && ( //                                            --- On affiche Carte que si lastEvent existe
-            <EventCard
-              imageSrc={lastEvent?.cover}
-              title={lastEvent?.title}
-              date={new Date(lastEvent?.date)}
-              small
-              // <--- Correction du type de l'évènement (à la place de "Boom")
-              label={lastEvent?.type} //                                                   --- Type de l'évènement
-            />
+            <Modal Content={<ModalEvent event={lastEvent} />}>
+              {({ setIsOpened }) => (
+                <EventCard
+                  onClick={() => setIsOpened(true)}
+                  imageSrc={lastEvent?.cover}
+                  title={lastEvent?.title}
+                  date={new Date(lastEvent?.date)}
+                  small
+                  // <--- Correction du type de l'évènement (à la place de "Boom")
+                  label={lastEvent?.type} //                                                   --- Type de l'évènement
+                />
+              )}
+            </Modal>
           )}
         </div>
         <div className="col contact">

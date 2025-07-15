@@ -24,6 +24,10 @@ nav {
       a {
         text-decoration: none;
         color: $black;
+        &:hover {
+          // Au survol, on change la couleur du texte pour celle du logo
+          color: #5B32FF;
+        }
       }
     }
     padding-right: 50px;
